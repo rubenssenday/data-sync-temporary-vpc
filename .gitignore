@@ -1,0 +1,43 @@
+# Terraform local cache and directories
+**/.terraform/
+.terraform/
+
+# Terraform state files
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+
+# Terraform crash log files
+crash.log
+crash.*.log
+
+# Terraform plan files
+*tfplan*
+
+# Terraform CLI configuration
+.terraformrc
+terraform.rc
+
+# Executables and provider binaries
+*.exe
+*.dll
+*.so
+*.dylib
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# Editor and IDE directories
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Temporary and backup files
+*.bak
+*.tmp
