@@ -145,13 +145,41 @@ dir = "data"
 EOF
 ```
 
-2. Execute o RedisShake dentro de uma sessão `tmux` (para não perder o progresso caso caia a conexão):
+2. Execute o RedisShake dentro de uma sessão `tmux` (para não perder o progresso caso a sua conexão caia ou você feche o terminal):
 ```bash
+# 1. Iniciar uma nova sessão chamada 'migracao':
 tmux new -s migracao
+
+# 2. Rodar a migração:
 redis-shake shake.toml
 ```
 
-*(Para sair da visualização do tmux sem interromper o processo, pressione `Ctrl+B` e depois `D`)*.
+#### 💡 Gerenciamento da Sessão do `tmux`:
+
+* **Sair da sessão mantendo o processo em execução (Detach):**
+  Pressione **`Ctrl + B`** (solte as teclas) e em seguida pressione **`D`**.
+  *(A tela voltará para o prompt comum da EC2, mas a migração continuará rodando em segundo plano)*.
+
+* **Listar sessões ativas do tmux:**
+  ```bash
+  tmux ls
+  ```
+  *(Exibe todas as sessões em execução no servidor e seu status)*.
+
+* **Reconectar / Anexar na sessão (Attach):**
+  ```bash
+  # Reconectar na sessão específica:
+  tmux attach -t migracao
+
+  # Ou simplesmente reconectar na última sessão ativa:
+  tmux a
+  ```
+
+* **Encerrar a sessão do tmux:**
+  Quando a migração terminar e você quiser fechar o tmux, basta digitar `exit` dentro dele ou rodar:
+  ```bash
+  tmux kill-session -t migracao
+  ```
 
 ---
 
